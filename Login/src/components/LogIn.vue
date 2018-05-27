@@ -11,7 +11,7 @@
         <option value="bumen">部门管理员</option>
         <option value="dingji">顶级管理员</option>
       </select>
-      <li><a>忘记密码?</a></li>
+      <li><a href="#">忘记密码?</a></li>
 
       <input class="button" type="button" value="登录" @click="fSure">
     </form>
