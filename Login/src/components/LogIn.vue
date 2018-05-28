@@ -3,17 +3,18 @@
     <div class="web_bg"></div>
 
     <form>
-      <h4> 一知 知识库管理系统 </h4>
-      <input class="name" type="text" placeholder="Enter Username" v-model="Username">
-      <input class="pw" type="password" placeholder="Enter Password" v-model="Password">
-      <select>
-        <option value="yuangong">员工</option>
-        <option value="bumen">部门管理员</option>
-        <option value="dingji">顶级管理员</option>
-      </select>
-      <li><a href="#">忘记密码?</a></li>
-
-      <input class="button" type="button" value="登录" @click="fSure">
+      <h4>知识库管理系统</h4>
+      <li class="input"><img src="../assets/my.png"><input class="name" type="text" placeholder="Enter Username" v-model="Username"></li>
+      <li class="input"><img src="../assets/mm.png"><input class="pw" type="password" placeholder="Enter Password" v-model="Password"></li>
+      <label class="checkbox">
+        <input type="checkbox">
+        <span>记住我</span>
+      </label>
+      <button class="button" type="button" @click="fSure">登录</button>
+      <ul class="fog">
+        <li><a href="#">现在注册!</a></li>
+        <li><a href="#">忘记密码?</a></li>
+      </ul>
     </form>
   </section>
 </template>

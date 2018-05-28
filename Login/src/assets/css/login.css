@@ -29,8 +29,8 @@ body {
 form {
   position: relative;
   width: 360px;
-  height: 250px;
-  margin: 200px auto;
+
+  margin: 200px auto 0;
   text-align: center;
   background: #ecf0f1;
   padding: 40px;
@@ -52,31 +52,55 @@ h4 {
   text-shadow: 1px 1px 0px white;
 }
 
-input {
+/*input {
   display: block;
-  width: 315px;
+  width: 100%;
   padding: 14px;
+  box-sizing: border-box;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
   border: 0;
-  margin-bottom: 12px;
+  margin-bottom: 25px;
   color: #7f8c8d;
   font-weight: 600;
   font-size: 16px;
+}*/
+.input{
+  display: flex;justify-content: space-between;align-items: center;
+  margin-bottom: 25px;
+}
+.input input{
+
+  flex: 1;
+  padding: 14px;
+  box-sizing: border-box;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  border: 0;
+  background: none;
+  color: #7f8c8d;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;outline:none;
+  border-bottom: 2px solid #3498db;
 }
 
-input:focus {
-  background: #fafafa;
+.input input:focus {
+  background: none;
 }
-
-li {
-  position: absolute;
-  right: 40px;
-  bottom: 58px;
+.input input:active{
+  background: none;
+}
+.input img{width: 30px}
+li,ul {
   list-style: none;
 }
-
+.checkbox{
+  text-align: left;
+  display: block;
+}
 select {
   height: 30px;
   width: 100px;
@@ -109,10 +133,10 @@ a, a:visited {
 }
 
 .button {
-  position: relative;
-  float: left;
-  width: 145px;
-  margin-top: 10px;
+
+line-height: 2.5;
+  width: 100%;
+  margin-top: 40px;
   background: #3498db;
   color: #fff;
   font-weight: 400;
@@ -121,5 +145,10 @@ a, a:visited {
   -webkit-transition: all .3s ease-in-out;
   -moz-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
+  font-size: 110%;
 }
 
+.fog{
+  display: flex; justify-content: space-between; align-items: center; margin-top: 30px;
+}
+.fog a:hover{ cursor: pointer; color: #3498db}
