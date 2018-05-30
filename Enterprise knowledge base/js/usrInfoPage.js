@@ -284,6 +284,9 @@ var centerCoIntain = new Vue({
 	}
 });
 
+
+
+///
 $(function($){
     var ms = {
         init:function(totalsubpageTmep,args){
