@@ -1,22 +1,44 @@
 <template>
-  <section>
+  <div>
     <div class="web_bg"></div>
 
-    <form>
-      <h4>知识库管理系统</h4>
-      <li class="input"><img src="../assets/my.png"><input class="name" type="text" placeholder="Enter Username" v-model="Username"></li>
-      <li class="input"><img src="../assets/mm.png"><input class="pw" type="password" placeholder="Enter Password" v-model="Password"></li>
+    <form class="web_form">
+      <h4>企业知识库管理系统</h4>
+      <li class="input">
+        <img src="../assets/my.png">
+        <input class="name" type="text" placeholder="Username" 
+        @focus="focususername" 
+        @blur="blurusername" 
+        v-model="userNameStr"
+        v-bind:style="{'border-bottom-color':UNborderColor}"/>
+      </li>
+      <li id="err">
+            <p v-if="UNSeen">{{UNERR}}</p>
+      </li>
+        
+      <li class="input">
+        <img src="../assets/mm.png">
+        <input class="pw" type="password" placeholder="Password" 
+        @focus="focusPassWord" 
+        @blur="blurPassWord" 
+        v-model="passWordStr"
+        v-bind:style="{borderColor:PWDborderColor}"/>
+      </li>
+      <li id="err">
+            <p v-if="PWDSeen">{{PWDERR}}</p>
+      </li>
+
       <label class="checkbox">
         <input type="checkbox">
         <span>记住我</span>
       </label>
-      <button class="button" type="button" @click="fSure">登录</button>
+      <div id="loginButton" class="button"  v-on:click="loginClick">登  录</div>
       <ul class="fog">
         <li><a href="#">现在注册!</a></li>
         <li><a href="#">忘记密码?</a></li>
       </ul>
     </form>
-  </section>
+   </div>
 </template>
 
 <script>
@@ -24,22 +46,74 @@
     name: 'LogIn',
     data() {
       return {
-        Username: '',
-        Password: ''
+        userNameStr:'',
+        passWordStr:'',
+        PWDborderColor:'',
+        UNborderColor:'',
+        UNERR:'',
+        UNSeen:false,
+        PWDERR:'',
+        PWDSeen:false,
       }
     },
     methods: {
-      fSure() {
-        if (this.Username == '') {
-          alert('用户名 必须填');
-          return
+      focususername:function(){
+      this.UNborderColor='rgb(39,166,155)';
+      this.UNSeen=false;
+      },
+      blurusername:function(){
+        if(this.userNameStr=='')
+        {
+          this.UNborderColor='red';
+          this.UNSeen=true;
+          this.UNERR='用户名不能为空'
         }
-        if (this.Password.length < 6) {
-          alert('密码长度 必须6位数以上')
-          return
+        else{
+          this.UNborderColor='green';
         }
-        alert('登陆成功')
-        location.reload();
+      },
+
+      focusPassWord:function(){
+      this.PWDborderColor='';
+      this.PWDSeen=false;
+      },
+      blurPassWord:function(){
+        if(this.passWordStr=='')
+        {
+          this.PWDborderColor='red';
+          this.PWDSeen=true;
+          this.PWDERR='请输入密码';
+        }
+        else{
+          this.PWDborderColor='green';
+        }
+      },
+
+      loginClick:function(){
+        if(this.UNborderColor=='green' &&
+        this.PWDborderColor=='green'){
+
+          this.$http.get('http://www.ls1rius.com:8080/login', {
+              params: {
+                "username": this.userNameStr,  
+                "password": this.passWordStr,
+              },
+              dataType:'json'
+          }).then((res) => {
+              // res.forEach(function (c) {  
+              //   console.log(c);
+              // })
+              console.log(res.body.result);
+              console.log(res.body.msg);
+              alert("登录成功");
+          }, (response) => {
+            // error callback
+          });
+          
+        }
+        else{
+          alert("登录失败");
+        }
       }
     }
   }
