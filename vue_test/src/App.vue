@@ -1,5 +1,4 @@
 <template>
-	<div>
 		<div id="app">
 	
 			<!-- <img src="./assets/logo.png"> -->
@@ -23,7 +22,6 @@
                 </div>
             </div>     
 		</div>
-	</div>
 </template>
 
 <script>

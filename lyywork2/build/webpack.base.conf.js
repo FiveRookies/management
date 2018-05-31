@@ -9,19 +9,6 @@ function resolve (dir) {
 }
 
 
-var webpack=require('webpack');
-
-
-const createLintingRule = () => ({
-  test: /\.(js|vue)$/,
-  loader: 'eslint-loader',
-  enforce: 'pre',
-  include: [resolve('src'), resolve('test')],
-  options: {
-    formatter: require('eslint-friendly-formatter'),
-    emitWarning: !config.dev.showEslintErrorsInOverlay
-  }
-})
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
@@ -42,23 +29,15 @@ module.exports = {
       '@': resolve('src'),
     }
   },
-  plugins: [  
-    new webpack.ProvidePlugin({  
-      $:"jquery",  
-      jQuery:"jquery",  
-      "windows.jQuery":"jquery"  
-    })  
-  ],
   module: {
     rules: [
-    //   ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig
       },
       {
-        test: /\.js|\.jsx$/,
+        test: /\.js$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
