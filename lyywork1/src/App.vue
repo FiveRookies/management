@@ -22,9 +22,9 @@
                 </div>
             </div>
             <!-- 				<div class="usrInfoTopRight">
-                    					
-                    
-                    				</div> -->
+                                					
+                                
+                                				</div> -->
         </div>
         <div class="slidePickBar">
             <div class="slideSpace" v-bind:style="{left:curLeft+'px'}"></div>
@@ -57,8 +57,8 @@
                         <p>年龄：</p>
                         <p v-if="isChange">{{age}}</p>
                         <select v-if="!isChange" v-model="age">
-                    								<option v-for="n in 100">{{n}}</option>
-                    							</select>
+                                								<option v-for="n in 100">{{n}}</option>
+                                							</select>
                     </li>
                     <li>
                         <p>性别：</p>
@@ -86,10 +86,11 @@
         </div>
         <div id="personas" v-if="isPersonas">
             <div id="contributionPart">
-                <div id="pie-container" style="height: 100%;width:100%" ></div>
+                <div id="pie-container"></div>
                 <!-- <iframe src="pie-simple.html" frameborder=0 scrolling="no" border=0 width=100% height=100%></iframe> -->
             </div>
             <div id="contributionTime">
+                <div id="time-container"></div>
                 <!-- <iframe src="multiple-x-axis.html" frameborder=0 scrolling="no" border=0 width=100% height=100%></iframe> -->
             </div>
         </div>
@@ -152,9 +153,9 @@
                     <div class="senderInfo">
                         <span>{{msgItem.word}}</span>
                         <span>
-                    								<p>{{msgItem.name}}</p>
-                    								<p style="margin-left: 5px;">{{msgItem.time}}</p>
-                    							</span>
+                                								<p>{{msgItem.name}}</p>
+                                								<p style="margin-left: 5px;">{{msgItem.time}}</p>
+                                							</span>
                     </div>
                 </div>
             </div>
@@ -182,69 +183,68 @@
 </template>
 
 <script>
-    import $ from 'jquery'
-</script>
-
-<script>
-    import 'echarts/theme/macarons.js'
     
-    console.log("inEcharts");
-    var dom = document.getElementById("pie-container");
-    console.log(dom);
-    var myChart = echarts.init(dom, 'macarons');
-    var app = {};
-    option = null;
-    option = {
-        tooltip: {
-            trigger: 'item',
-            formatter: "{a} <br/>{b} : {c} ({d}%)"
-        },
-        legend: {
-            orient: 'vertical',
-            left: 'left',
-            data: ['大数据', '纳斯达克', '区块链', '数字货币', '机器学习']
-        },
-        series: [{
-            name: '访问来源',
-            type: 'pie',
-            radius: '55%',
-            center: ['50%', '60%'],
-            data: [{
-                    value: 335,
-                    name: '大数据'
-                },
-                {
-                    value: 310,
-                    name: '纳斯达克'
-                },
-                {
-                    value: 234,
-                    name: '区块链'
-                },
-                {
-                    value: 135,
-                    name: '数字货币'
-                },
-                {
-                    value: 1548,
-                    name: '机器学习'
-                }
-            ],
-            itemStyle: {
-                emphasis: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                }
-            }
-        }]
-    };;
-    if (option && typeof option === "object") {
-        myChart.setOption(option, true);
-    }
 </script>
 
 <script>
+    // console.log("inEcharts");
+    // var dom = document.getElementById("pie-container");
+    // console.log(dom);
+    // var myChart = echarts.init(dom, 'macarons');
+    // var app = {};
+    // option = null;
+    // option = {
+    //     tooltip: {
+    //         trigger: 'item',
+    //         formatter: "{a} <br/>{b} : {c} ({d}%)"
+    //     },
+    //     legend: {
+    //         orient: 'vertical',
+    //         left: 'left',
+    //         data: ['大数据', '纳斯达克', '区块链', '数字货币', '机器学习']
+    //     },
+    //     series: [{
+    //         name: '访问来源',
+    //         type: 'pie',
+    //         radius: '55%',
+    //         center: ['50%', '60%'],
+    //         data: [{
+    //                 value: 335,
+    //                 name: '大数据'
+    //             },
+    //             {
+    //                 value: 310,
+    //                 name: '纳斯达克'
+    //             },
+    //             {
+    //                 value: 234,
+    //                 name: '区块链'
+    //             },
+    //             {
+    //                 value: 135,
+    //                 name: '数字货币'
+    //             },
+    //             {
+    //                 value: 1548,
+    //                 name: '机器学习'
+    //             }
+    //         ],
+    //         itemStyle: { 
+    //             emphasis: {
+    //                 shadowBlur: 10,
+    //                 shadowOffsetX: 0,
+    //                 shadowColor: 'rgba(0, 0, 0, 0.5)'
+    //             }
+    //         }
+    //     }]
+    // };;
+    // if (option && typeof option === "object") {
+    //     myChart.setOption(option, true);
+    // }
+</script>
+
+<script>
+    import echarts from 'echarts'
     export default {
         name: 'centerContain',
         data() {
@@ -410,14 +410,14 @@
                 ],
                 curCheckMsg: 0,
                 curMsgContent: 'Shibor报价银行团现由16家商业银行组成，包括工、农、中、建四家国有商业银行，交行、招商、光大、中信、兴业、浦发6家全国性股份制银行，北京银行、上海银行、南京银行3家城市商业性银行和“德意志上海”、“汇丰上海”、”渣打上海”3家外资银行。此16家报价银行是公开市场一级交易商或外汇市场做市商，在中国货币市场上人民币交易相对活跃、信息披露比较充分的银行。\
-                    						    						Shibor报价银行团现由16家商业银行组成，包括工、农、中、建四家国有商业银行，交行、招商、光大、中信、兴业、浦发6家全国性股份制银行，北京银行、上海银行、南京银行3家城市商业性银行和“德意志上海”、“汇丰上海”、”渣打上海”3家外资银行。此16家报价银行是公开市场一级交易商或外汇市场做市商，在中国货币市场上人民币交易相对活跃、信息披露比较充分的银行。\
-                    						    						Shibor报价银行团现由16家商业银行组成，包括工、农、中、建四家国有商业银行，交行、招商、光大、中信、兴业、浦发6家全国性股份制银行，北京银行、上海银行、南京银行3家城市商业性银行和“德意志上海”、“汇丰上海”、”渣打上海”3家外资银行。此16家报价银行是公开市场一级交易商或外汇市场做市商，在中国货币市场上人民币交易相对活跃、信息披露比较充分的银行。\
-                    						    						Shibor报价银行团现由16家商业银行组成，包括工、农、中、建四家国有商业银行，交行、招商、光大、中信、兴业、浦发6家全国性股份制银行，北京银行、上海银行、南京银行3家城市商业性银行和“德意志上海”、“汇丰上海”、”渣打上海”3家外资银行。此16家报价银行是公开市场一级交易商或外汇市场做市商，在中国货币市场上人民币交易相对活跃、信息披露比较充分的银行。\
-                    						    						Shibor报价银行团现由16家商业银行组成，包括工、农、中、建四家国有商业银行，交行、招商、光大、中信、兴业、浦发6家全国性股份制银行，北京银行、上海银行、南京银行3家城市商业性银行和“德意志上海”、“汇丰上海”、”渣打上海”3家外资银行。此16家报价银行是公开市场一级交易商或外汇市场做市商，在中国货币市场上人民币交易相对活跃、信息披露比较充分的银行。\
-                    						    						Shibor报价银行团现由16家商业银行组成，包括工、农、中、建四家国有商业银行，交行、招商、光大、中信、兴业、浦发6家全国性股份制银行，北京银行、上海银行、南京银行3家城市商业性银行和“德意志上海”、“汇丰上海”、”渣打上海”3家外资银行。此16家报价银行是公开市场一级交易商或外汇市场做市商，在中国货币市场上人民币交易相对活跃、信息披露比较充分的银行。\
-                                                                        Shibor报价银行团现由16家商业银行组成，包括工、农、中、建四家国有商业银行，交行、招商、光大、中信、兴业、浦发6家全国性股份制银行，北京银行、上海银行、南京银行3家城市商业性银行和“德意志上海”、“汇丰上海”、”渣打上海”3家外资银行。此16家报价银行是公开市场一级交易商或外汇市场做市商，在中国货币市场上人民币交易相对活跃、信息披露比较充分的银行。\
-                                                                        ',
-                option :{
+                                						    						Shibor报价银行团现由16家商业银行组成，包括工、农、中、建四家国有商业银行，交行、招商、光大、中信、兴业、浦发6家全国性股份制银行，北京银行、上海银行、南京银行3家城市商业性银行和“德意志上海”、“汇丰上海”、”渣打上海”3家外资银行。此16家报价银行是公开市场一级交易商或外汇市场做市商，在中国货币市场上人民币交易相对活跃、信息披露比较充分的银行。\
+                                						    						Shibor报价银行团现由16家商业银行组成，包括工、农、中、建四家国有商业银行，交行、招商、光大、中信、兴业、浦发6家全国性股份制银行，北京银行、上海银行、南京银行3家城市商业性银行和“德意志上海”、“汇丰上海”、”渣打上海”3家外资银行。此16家报价银行是公开市场一级交易商或外汇市场做市商，在中国货币市场上人民币交易相对活跃、信息披露比较充分的银行。\
+                                						    						Shibor报价银行团现由16家商业银行组成，包括工、农、中、建四家国有商业银行，交行、招商、光大、中信、兴业、浦发6家全国性股份制银行，北京银行、上海银行、南京银行3家城市商业性银行和“德意志上海”、“汇丰上海”、”渣打上海”3家外资银行。此16家报价银行是公开市场一级交易商或外汇市场做市商，在中国货币市场上人民币交易相对活跃、信息披露比较充分的银行。\
+                                						    						Shibor报价银行团现由16家商业银行组成，包括工、农、中、建四家国有商业银行，交行、招商、光大、中信、兴业、浦发6家全国性股份制银行，北京银行、上海银行、南京银行3家城市商业性银行和“德意志上海”、“汇丰上海”、”渣打上海”3家外资银行。此16家报价银行是公开市场一级交易商或外汇市场做市商，在中国货币市场上人民币交易相对活跃、信息披露比较充分的银行。\
+                                						    						Shibor报价银行团现由16家商业银行组成，包括工、农、中、建四家国有商业银行，交行、招商、光大、中信、兴业、浦发6家全国性股份制银行，北京银行、上海银行、南京银行3家城市商业性银行和“德意志上海”、“汇丰上海”、”渣打上海”3家外资银行。此16家报价银行是公开市场一级交易商或外汇市场做市商，在中国货币市场上人民币交易相对活跃、信息披露比较充分的银行。\
+                                                                                    Shibor报价银行团现由16家商业银行组成，包括工、农、中、建四家国有商业银行，交行、招商、光大、中信、兴业、浦发6家全国性股份制银行，北京银行、上海银行、南京银行3家城市商业性银行和“德意志上海”、“汇丰上海”、”渣打上海”3家外资银行。此16家报价银行是公开市场一级交易商或外汇市场做市商，在中国货币市场上人民币交易相对活跃、信息披露比较充分的银行。\
+                                                                                    ',
+                option: {
                     tooltip: {
                         trigger: 'item',
                         formatter: "{a} <br/>{b} : {c} ({d}%)"
@@ -461,7 +461,133 @@
                             }
                         }
                     }]
-                }
+                },
+                TimeOption : {
+                    tooltip: {
+                        trigger: 'none',
+                        axisPointer: {
+                            type: 'cross'
+                        }
+                    },
+                    color: ["#c12e34",
+                        "#e6b600",
+                        "#0098d9",
+                        "#2b821d",
+                        "#005eaa",
+                        "#339ca8",
+                        "#cda819",
+                        "#32a487"
+                    ],
+                    legend: {
+                        data: ['运营', '产品', '策划', '技术', '市场', '销售'],
+                        textStyle: { // 属性lineStyle控制线条样式  
+                            // fontWeight: 'bold',  
+                            fontSize: 12,
+                            color: '#000'
+                        }
+                    },
+                    grid: {
+                        top: 70,
+                        bottom: 50
+                    },
+                    xAxis: [{
+                            type: 'category',
+                            axisTick: {
+                                alignWithLabel: true
+                            },
+                            axisLine: {
+                                onZero: false,
+                                lineStyle: {
+                                    color: 'gray'
+                                }
+                            },
+                            axisLabel: { // 坐标轴小标记  
+                                textStyle: { // 属性lineStyle控制线条样式  
+                                    // fontWeight: 'bold',  
+                                    fontSize: 12,
+                                    color: '#000'
+                                }
+                            },
+                            data: ["2018-4-6", "2018-4-7", "2018-4-8", "2018-4-9", "2018-4-9", "2018-4-10"]
+                        },
+                        {
+                            type: 'category',
+                            axisTick: {
+                                alignWithLabel: true
+                            },
+                            axisLine: {
+                                onZero: false,
+                                lineStyle: {
+                                    color: 'gray'
+                                }
+                            },
+                            axisLabel: { // 坐标轴小标记  
+                                textStyle: { // 属性lineStyle控制线条样式  
+                                    // fontWeight: 'bold',  
+                                    fontSize: 12,
+                                    color: '#000'
+                                }
+                            },
+                            data: ["2018-4-6", "2018-4-7", "2018-4-8", "2018-4-9", "2018-4-9", "2018-4-10"]
+                        }
+                    ],
+                    yAxis: [{
+                        type: 'value',
+    
+                        // y轴的颜色和宽度
+                        axisLine: {
+                            lineStyle: {
+                                color: 'gray'
+                            }
+                        },
+                        // y轴的字体样式
+                        axisLabel: {
+                            show: true,
+                            textStyle: {
+                                fontSize: 12,
+                                color: '#000'
+                            }
+                        }
+                    }],
+                    series: [{
+                            name: '运营',
+                            type: 'line',
+                            xAxisIndex: 1,
+                            smooth: true,
+                            data: [9.9, 3.2, 1.3, 3.3, 0.9, 1.9]
+                        },
+                        {
+                            name: '产品',
+                            type: 'line',
+                            smooth: true,
+                            data: [5.6, 4.2, 4.4, 3.1, 4.8, 6.6]
+                        },
+                        {
+                            name: '策划',
+                            type: 'line',
+                            smooth: true,
+                            data: [3.0, 4.5, 1.0, 1.2, 4.9, 6.5]
+                        },
+                        {
+                            name: '技术',
+                            type: 'line',
+                            smooth: true,
+                            data: [6.7, 7.8, 5.4, 4.6, 8.8, 7.5]
+                        },
+                        {
+                            name: '市场',
+                            type: 'line',
+                            smooth: true,
+                            data: [1.2, 2.3, 3.2, 1.2, 4.5, 8.0]
+                        },
+                        {
+                            name: '销售',
+                            type: 'line',
+                            smooth: true,
+                            data: [7.8, 0.2, 4.5, 4.0, 1.3, 5.2]
+                        }
+                    ]
+                },
             }
         },
         methods: {
@@ -566,19 +692,28 @@
                 this.curMsgContent = this.msgData[index].content;
             },
             createPieSimple: function() {
+                var self = this;
                 console.log("inEcharts");
                 var dom = document.getElementById("pie-container");
-                console.log(dom);
                 var myChart = echarts.init(dom, 'macarons');
-                if (option && typeof option === "object") {
-                    myChart.setOption(option, true);
+                if (self.option && typeof self.option === "object") {
+                    myChart.setOption(self.option, true);
                 }
             },
-            readonly:function(){
-                this.createPieSimple();
+            createTimeSimple:function(){
+                console.log("inTime");
+                var self = this;
+                var dom = document.getElementById("time-container");
+                var myChart = echarts.init(dom,'macarons');
+                if(self.TimeOption && typeof self.TimeOption === 'object'){
+                    myChart.setOption(self.TimeOption,true);
+                }
             }
         },
-    
+        mounted() {
+            this.createPieSimple();
+            this.createTimeSimple();
+        },
     }
     $(function($) {
         var ms = {
@@ -998,9 +1133,14 @@
         align-items: center;
     }
     
-    #personas div {
+    #contributionPart {
         width: 50%;
-        height: 50%;
+        height: 100%;
+    }
+    
+    #contributionTime {
+        width: 50%;
+        height: 100%;
     }
     
     #myFans,
@@ -1179,5 +1319,23 @@
         align-content: center;
         margin-left: 10px;
         cursor: pointer;
+    }
+    
+    #contributionPart {
+        width: 707px;
+        height: 235px;
+    }
+    #contributionTime{
+        width:100%;
+        height: 50%;
+    }
+    
+    #pie-container {
+        width: 100%;
+        height: 100%;
+    }
+    #time-container{
+        width: 100%;
+        height: 100%;
     }
 </style>
