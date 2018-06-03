@@ -245,6 +245,7 @@
 
 <script>
     import echarts from 'echarts'
+    import 'bootstrap'
     export default {
         name: 'centerContain',
         data() {
@@ -627,7 +628,7 @@
                 } else if (index == 3) {
                     this.isMyFollows = true;
                     setTimeout(function() {
-                        $("#myFans .pagination").createPage({
+                        $("#myFollows .pagination").createPage({
                             totalPage: 30,
                             currPage: 1,
                             backFn: function(p) {

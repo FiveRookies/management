@@ -5,6 +5,8 @@ import App from './App'
 import router from './router'
 import $ from 'jquery'
 import 'echarts/theme/macarons.js'
+import './assets/js/bootstrap.min.js'
+import './assets/css/bootstrap.min.css'
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
