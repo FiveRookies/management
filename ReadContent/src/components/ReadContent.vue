@@ -175,7 +175,7 @@
                       <div>
                         <form action="" class="new-comment">
                             <a href="" class="avatar">
-                              <img src="../assets/img/myself.jpg">
+                              <img src="//upload.jianshu.io/users/upload_avatars/3152450/603f1e16-dd0e-4745-896c-3c11948d2ab6.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/114/h/114">
                             </a>
                             <textarea  @click="showSendBoxOnce" placeholder="写下你的评论..." v-model="commentContent"></textarea>
                             <transition name="fade">
@@ -277,7 +277,7 @@
                                   <!-- 更多评论的输入框 -->
                                   <form action="" class="new-comment">
                                       <a href="" class="avatar">
-                                        <img src="../assets/img/myself.jpg">
+                                        <img src="//upload.jianshu.io/users/upload_avatars/3152450/603f1e16-dd0e-4745-896c-3c11948d2ab6.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/114/h/114">
                                       </a>
                                       <textarea placeholder="写下你的评论..." v-model="item.textareavalue"></textarea>
                                       <div class="write-function-block">
