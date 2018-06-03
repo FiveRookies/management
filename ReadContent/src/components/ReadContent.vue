@@ -966,6 +966,7 @@ li {
   width: 100%;
   height: 100%;
   min-width: 700px;
+  height: 740px;
   background-color: #ffffff;
   border-radius: 10px;
   padding: 10px 20px 0px 20px;
